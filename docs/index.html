@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introdução a Ciência de Dados com R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gerrio Barbosa" />
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.6/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.6/shareagain.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/animate.css-3.7.2/animate.css" rel="stylesheet" />
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Introdução a Ciência de Dados com R
+]
+.author[
+### Gerrio Barbosa
+]
+.institute[
+### Seplag - OFB
+]
+.date[
+### Agosto de 2022
+]
+
+---
+
+class: center, middle, animated slideInRight fadeOutLeft, animated slideInRight fadeOutLeft
+
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(ofb.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+right:1em;bottom:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+
+
+
+
+
+
+
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 10px;
+  background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+
+# Introdução
+
+---
+
+# O que é o R?
+
+
+É uma linguagem de programação de computadores utilizada principalmente
+para manipulação de dados e visualização de gráficos. `R` é uma linguagem de código aberto criada em 1993 pelo departamento de Estatística da Universidade de Auckland (pelos estatísticos     **R**oss Ihaka e **R**obert Gentleman), Nova Zelândia, baseada na linguagem `S` (criada por John Chambers Rick Becker e Allan Wilks em 1976, na Bell Labs).
+
+O `R` é escrito principalmente em `C` e `Fortran`, sendo disponível gratuitamente sob a licença GNU General Public e em vários sistemas operacionais como `MAC`, `Windows` e `Linux.`
+
+O `R` usa uma _Integrated Development Environment_ (IDE) própria, com interface não muito amigável. Porém, há algumas interfaces que podem ser integradas ao software que ajudam a melhorar o visual.
+
+
+---
+# Por que usar R?
+
+- _Open Source_:
+
+    - É grátis.
+    - Todos podem usar as mesmas ferramentas, independente de condições finaceiras e/ou sociais.
+    - Podemos desenvolver nossas próprias ferramentas.
+    - Podemos aprimorar ferramentas já disponíveis pela comunidade `R`.
+
+- Linguagem simples e fácil de entender.
+
+- Facilidade em se conectar a linguagens de programação de alto desempenho como `C`, `Fortran` e `C++`.
+
+- Possui grande comunidade, que é diversificada e acolhedora. 
+
+- Muitos pacotes.
+
+- Ferramentas poderosas como `Rmarkdown` e `shiny`.
+
+- Tem a IDE `Rstudio`, que facilita a interação com os dados.
+
+
+---
+
+# Instalação do R
+
+- Seguir para o [Comprehensive R Archive Network (CRAN)](https://cloud.r-project.org/), que funciona como uma pasta que arquiva vários servidores espelhos distribuídos. No entanto, não precisa você baixar o mais próximo a você, pois o `CRAN` já faz isso automaticamente.  
+
+# Instalação do Rstudio
+
+- `RStudio` é um ambiente de desenvolvimento integrado, ou IDE, para programação R.
+
+- Fazer _download_ e instalar em [RStudio](https://www.rstudio.com/products/rstudio/download/).
+
+- Uso do `R` _online_ por meio do [Rstudio Clound](https://login.rstudio.cloud/).
+
+
+O passo a passo para instalação em diferentes sistemas operacionais podem ser consultados no _ebook_ da **curso-r** de [Ciência de Dados em R](https://livro.curso-r.com/1-1-instalacao-do-r.html).
+
+---
+class: center, middle, animated slideInRight fadeOutLeft, animated slideInRight fadeOutLeft
+
+# Operações Básicas no R
+
+---
+
+```r
+# Soma
+1 + 1 
+```
+
+```
+## [1] 2
+```
+
+
+```r
+# Subtraçao
+5 - 2
+```
+
+```
+## [1] 3
+```
+
+
+```r
+# Multiplicação
+2 * 2
+```
+
+```
+## [1] 4
+```
+
+
+```r
+# Divisão
+ 10 / 2
+```
+
+```
+## [1] 5
+```
+---
+
+
+```r
+# Potência
+10 ^ 2
+```
+
+```
+## [1] 100
+```
+
+
+```r
+# Resto da divisão
+ 10 %% 3
+```
+
+```
+## [1] 1
+```
+
+
+
+```r
+# Raiz quadrada
+sqrt(100)
+```
+
+```
+## [1] 10
+```
+
+
+
+```r
+# Exponencial
+exp(1)
+```
+
+```
+## [1] 2.718282
+```
+
+
+```r
+# Logaritimo natural
+log(1)
+```
+
+```
+## [1] 0
+```
+
+---
+class: center, middle, animated slideInRight fadeOutLeft
+
+# Operadores Lógicos no R
+
+---
+
+
+```r
+# Igual
+3 == 3
+```
+
+```
+## [1] TRUE
+```
+- **Obs.:** O  **`=`**  signifitca _atribuição_, assim como  `&lt;-` . No entanto, no `R` é recomendado usar a  **`&lt;-`** .
+
+
+
+```r
+# Diferente
+3 != 4
+```
+
+```
+## [1] TRUE
+```
+
+
+
+```r
+# Maior que
+3 &gt; 3
+```
+
+```
+## [1] FALSE
+```
+
+
+
+
+```r
+# Menor que
+3 &lt; 2
+```
+
+```
+## [1] FALSE
+```
+---
+
+
+```r
+# Maior ou igual
+3 &gt;= 4
+```
+
+```
+## [1] FALSE
+```
+
+
+
+
+```r
+# Menor ou igual
+3 &lt;= 2
+```
+
+```
+## [1] FALSE
+```
+
+
+```r
+# Está contido em
+2 %in% 1:10
+```
+
+```
+## [1] TRUE
+```
+
+
+```r
+# E
+2 &lt; 3 &amp; 3 &gt; 2
+```
+
+```
+## [1] TRUE
+```
+
+---
+
+- No console do `Rstudio` é preciso apenas digitar o comando e apertar **Enter**. 
+
+
+```r
+1 + 1
+```
+
+```
+## [1] 2
+```
+
+```r
+1 + 2
+```
+
+```
+## [1] 3
+```
+
+- O `[1]` está apenas indicando que é o primeiro resultado. Abaixo dar para ver como funciona quando temos mais de um resultado.
+
+
+```r
+50:100
+```
+
+```
+##  [1]  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68
+## [20]  69  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87
+## [39]  88  89  90  91  92  93  94  95  96  97  98  99 100
+```
+---
+
+- Comando imcompleto. Aparece um `+` abaixo, indicando que falta o restante do código.
+
+
+
+```r
+&gt; 3 - 
+ + 
+```
+
+- Comando não reconhecido. Retorna mensagem de erro.
+
+
+```r
+&gt; 3 % 5
+Error: unexpected input in "3 % 5"
+&gt; 
+```
+
+---
+
+
+
+Table: Principais Operadores
+
+| Operador |      Descrição       |
+|:--------:|:--------------------:|
+|    +     |        Adição        |
+|    -     |      Subtração       |
+|    *     |    Multiplicação     |
+|    /     |       Divisão        |
+|    :     |      Sequência       |
+|    ^     |     Exponencial      |
+|    %%    |        Módulo        |
+|    ==    |      Igualdade       |
+|    &gt;     |     "Maior que"      |
+|    &lt;     |     "Menor que"      |
+|    &lt;=    | "Menor ou igual que" |
+|   %in%   |    "Está contido"    |
+|    &amp;     |          E           |
+|  &amp;#124;  |          OU          |
+
+---
+class: center, middle, animated slideInRight fadeOutLeft
+
+# Objetos
+---
+## Vetores
+- O operador `:` retorna resultados como um vetor.
+
+
+```r
+1:5
+```
+
+```
+## [1] 1 2 3 4 5
+```
+- Esse valor não fica gravado para ser recuperado posteriormente. Logo, vamos criar um **objeto R**.
+
+```r
+meu_objeto &lt;- 1
+```
+
+
+```r
+meu_objeto + 2
+```
+
+```
+## [1] 3
+```
+
+- Outro exemplo de objeto.
+
+```r
+outro &lt;- 1:5
+outro
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+
+---
+
+- Não usar em nomes de objetos:
+
+    - números (por exemplo, `1teste`)
+    - alguns simbolos especiais, como `^`, `!`, `$`, `@`, `+`, `-`, `/`, `*`
+    - Palavras reservadas, como por exemplo `if`, `for`, etc.
+
+- `R` é _case-sensitive_ (diferencia minúscula de maiúscula).
+
+
+```r
+Nome &lt;- 2
+
+nome &lt;- 0
+```
+
+```r
+Nome + 1
+```
+
+```
+## [1] 3
+```
+
+
+```r
+nome + 1
+```
+
+```
+## [1] 1
+```
+
+---
+
+- `R` sobrescreve objetos armazenados anteriormente.
+
+
+
+```r
+meu_num &lt;- 10
+meu_num 
+```
+
+```
+## [1] 10
+```
+
+```r
+meu_num &lt;- 900
+meu_num
+```
+
+```
+## [1] 900
+```
+
+- Ver os objetos armazenados.
+
+
+```r
+ls()
+```
+
+```
+## [1] "df"         "meu_num"    "meu_objeto" "nome"       "Nome"      
+## [6] "outro"
+```
+
+---
+
+- Agora temos os dados armazenados na memória do computador.
+
+- O `R` nem sempre aplica regras de multiplicação de matrizes. Pois, usa-se execução por elementos.
+
+
+```r
+d &lt;- 1:6
+
+# Subtrai 1 de cada elemento de `d`.
+d - 1
+```
+
+```
+## [1] 0 1 2 3 4 5
+```
+
+
+```r
+d &lt;- 1:6
+
+# soma elemento a elemento
+d + 5:9
+```
+
+```
+## [1]  6  8 10 12 14 11
+```
+
+
+
+```r
+# multiplica elemento a elemento 
+# (não usa a regra de nº de linhas de A deve ser igual ao nº de colunas de B)
+
+d * d
+```
+
+```
+## [1]  1  4  9 16 25 36
+```
+
+---
+class: center, middle, animated slideInRight fadeOutLeft
+
+# R Base
+
+---
+
+- A funcionalidade do **`R`** é dividida em vários pacotes:
+
+    - **`R base`** _package_  com as funções fundamentais.
+
+    - Outros pacotes contidos no sistema **`R base`**: `utils`, `stats`, `datasets`, `graphics`, `grDevices`, `grid`, `methods`, `tools`, `parallel`, `compiler`, `splines`, `tcltk`, `stats4`.
+    
+    - Pacotes "recomendados": `boot`, `class`, `cluster`, `codetools`, `foreign`, `KernSmooth`, `lattice`, `mgcv`, `nlme`, `rpart`, `survival`, `MASS`, `spatial`, `nnet`, `Matrix`.
+    
+
+# Manuais Oficiais do R 
+
+.pull-left[
+
+- [An introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+
+- [R Data Import/Export](https://cran.r-project.org/doc/manuals/r-release/R-data.html)
+
+- [Writing R Extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html)
+
+]
+
+.pull-right[
+
+- [R Installation and Administration](https://cran.r-project.org/doc/manuals/r-release/R-admin.html)
+
+- [R Internals](https://cran.r-project.org/doc/manuals/r-release/R-ints.html)
+
+- [R Language Definition](https://cran.r-project.org/doc/manuals/r-release/R-lang.html)
+
+]
+
+---
+
+
+## Acessar Help
+
+
+
+```r
+# Procura documentação da função e seus argumentos
+
+help(mean)
+?mean
+
+# Procura pelo nome (string) na documetação do R
+help.search('mean')
+
+# Procurar pacote
+help(package = 'dplyr')
+
+# Acessar funções do pacote usando `::`
+
+dplyr::select()
+```
+---
+
+
+## Usar Pacotes
+
+
+```r
+# Carregando o pacote
+&gt; library(dplyr)
+Error in library(dplyr) : there is no package called ‘dplyr’
+```
+
+
+
+```r
+# Download para baixar pacotes
+install.packages('dplyr')
+
+# Carregando o pacote
+library(dplyr)
+
+# Usar uma função particular de um pacote
+dplyr::select()
+
+# Baixar bases de dados já existentes no R
+data(iris)
+iris
+```
+---
+
+## Trabalhando com Diretórios
+
+
+```r
+# Encontra atual diretório
+getwd()
+
+# Modifica o atual diretório
+setwd('C://file/path')
+```
+
+- o `R` possui diretório padrão na sua máquina. O qual você descobre usando o `getwd()`.
+
+- Para mudar para um diretório específico, usa-se o `setwd('caminho do novo diretório')`.
+
+- No entanto, o ideal é trabalhar com o conceito de `projetos`, que será abordado em outro momento.
+
+---
+## O Ambiente
+
+
+```r
+# Listar todas as variáveis do ambiente
+ls()
+
+# Limpar um objeto do seu ambiente.
+# rm() é uma abreviação de remove(x)
+rm(x)
+
+# remover todos os objetos do seu ambiente.
+rm(list = ls())
+
+# Remover pacote
+remove.packages()
+```
+
+---
+class: center, middle, animated slideInRight fadeOutLeft
+
+# Introdução a Ciência de Dados
+
+---
+## Ciclo de Ciência de Dados
+
+&lt;img src="figuras/ciclo_DS_1.png" width="80%" style="display: block; margin: auto;" /&gt;
+---
+&lt;img src="figuras/ciclo_DS_2.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+## Criação de Projeto
+
+- **File** `&lt;-` **New Project**
+
+&lt;img src="figuras/1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="figuras/2.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+
+&lt;img src="figuras/3.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+
+# Criar projeto com pacote `usethis`
+
+
+```r
+# install.packages('usethis')
+# library(usethis)
+
+# Usar a função de criar pacote (lembrar de trocar a barra)
+
+create_project('C:/Users/gerri/OneDrive/Documentos/teste')
+```
+
+
+
+- &lt;font color="#0000CD"&gt;Caso não queira usar projetos, usar a forma menos eficiente&lt;/font&gt; `setwd( )`.
+---
+## Desabilitar o **Restore .RData**:
+ 
+   - **Tools** `-&gt;` **Global Options** `-&gt;` **General**
+   
+&lt;img src="figuras/desabilitar_restore.gif" width="35%" style="display: block; margin: auto;" /&gt;
+
+- Não mostrará códigos e bases de dados executados anteriormente.
+
+---
+class: center, middle, animated slideInRight fadeOutLeft
+
+# Tidyverse
+
+---
+
+## Ver todos os pacotes do `tidyverse`.
+
+
+```r
+# install.packages('tidyverse')
+library(tidyverse)
+tidyverse_packages()
+```
+
+```
+##  [1] "broom"         "cli"           "crayon"        "dbplyr"       
+##  [5] "dplyr"         "dtplyr"        "forcats"       "googledrive"  
+##  [9] "googlesheets4" "ggplot2"       "haven"         "hms"          
+## [13] "httr"          "jsonlite"      "lubridate"     "magrittr"     
+## [17] "modelr"        "pillar"        "purrr"         "readr"        
+## [21] "readxl"        "reprex"        "rlang"         "rstudioapi"   
+## [25] "rvest"         "stringr"       "tibble"        "tidyr"        
+## [29] "xml2"          "tidyverse"
+```
+
+---
+## Importação de Dados com `readr`
+
+
+
+```r
+# install.packages('readr')
+
+library(readr) # Para csv e txt.
+
+
+df &lt;- read_csv(file = "dados/base.csv") # separado por "," 
+
+df &lt;- read_csv2(file = "dados/base.csv") # separado por ";" 
+
+df &lt;- read_delim(file = "dados/base.csv", delim = "|") # seprado por outros delimitadores.
+```
+
+ - Os quadros de dados no `tidyverse` retornam no formato de `tibble`, que é uma forma mais sofisticada de um `data.frame` nativo do R. 
+ 
+ - Para dados com larguras fixas (PNAD, por exemplo) usa-se `read_fwf( )`.
+
+
+
+
+---
+## Importação de Dados com `readxl`
+
+
+```r
+# install.packages('readxl')
+
+library(readxl) # Para xls e xlsx.
+
+df &lt;- read_xls("data-raw/base.xls")
+
+df &lt;- read_xlsx("dados/base.xlsx")
+
+df &lt;- read_excel() # para ambos.
+```
+
+ - Outros pacotes que são bastante utilizados:
+ 
+   - `data.table` (similar ao `readr`)
+   
+   - `read.dbc` e `foreign` (microdados do SUS)
+   
+   - `rgdal` e `sf` (dados espaciais)
+   
+   - `xml2` (dados do currículo Lattes e wikipedia)
+
+---
+
+## Exemplo:
+
+
+```r
+# Relação Anual de Informações Sociais (RAIS)
+rais &lt;- read_xlsx(path = 'data-raw/df_rais.xlsx')
+
+# Base de Dados da Covid 19
+covid &lt;- read_csv('data-raw/caso.csv')
+
+# Pegar online no brail.io (ultimo atualização no site em 2022-03-27)
+# url = "https://data.brasil.io/dataset/covid19/caso.csv.gz"
+# covid &lt;- readr::read_csv(url)
+```
+
+
+---
+
+## Manipulando e Transformando com `dplyr`
+
+- Algumas das funções do pacote
+
+
+
+|Verbos    |Funções                                                              |
+|:---------|:--------------------------------------------------------------------|
+|mutate    |cria novas colunas, mantendo as existentes                           |
+|rename    |renomea colunas de interesse                                         |
+|select    |seleciona colunas de interesse                                       |
+|filter    |seleciona um subconjunto de dados (linhas) por condições             |
+|group_by  |realiza agrupamentos de variáveis                                    |
+|summarise |condensa múltiplos valores para um ´unico valor, redução de dimensão |
+|arrange   |reordena linhas                                                      |
+|*_join    |junções de tabelas (left, right, inner, full...)                     |
+|relocate  |reordena a posição das coluna                                        |
+|across    |realiza transformações com mais de uma coluna ao mesmo tempo         |
+|distinct  |filtra linhas com valores distintos/unicos                           |
+
+
+
+---
+
+- Aplicando na prática os verbos do `dplyr`:
+ 
+
+```r
+# Usamos a base de dados de caso.csv (covid) do brasil.io
+
+covid_1 &lt;- mutate(covid, regiao = case_when(
+    state %in% c('PA', 'AM', 'AP', 'RO', 'AC', 'TO', 'RR') ~ "NO",
+    state %in% c('BA', 'CE', 'PE', 'MA', 'PI', 'SE', 'AL', 'PB', 'RN') ~ "NE",
+    state %in% c('SP', 'RJ', 'MG', 'ES') ~ "SE",
+    state %in% c('RS', 'PR', 'SC') ~ "SU",
+    state %in% c('MS', 'MT', 'GO', 'DF') ~ "CO"))
+
+covid_2 &lt;- rename(covid_1, pop = estimated_population_2019)
+
+covid_3 &lt;- select(covid_2, date, regiao, state, city, place_type, pop, deaths)
+
+covid_4 &lt;- filter(covid_3, regiao == 'NE')
+
+covid_5 &lt;-  group_by(covid_4, state)
+
+covid_6 &lt;- summarise(covid_5, deaths = max(deaths, na.rm = T))
+
+covid_7 &lt;-  arrange(covid_6, deaths)
+```
+---
+
+# - Uso do pipe `|&gt;` é muito importante para melhorar a eficiência do código.
+
+
+```r
+covid_1 &lt;- covid |&gt;
+  mutate(regiao = case_when(
+    state %in% c('PA', 'AM', 'AP', 'RO', 'AC', 'TO', 'RR') ~ "NO",
+    state %in% c('BA', 'CE', 'PE', 'MA', 'PI', 'SE', 'AL', 'PB', 'RN') ~ "NE",
+    state %in% c('SP', 'RJ', 'MG', 'ES') ~ "SE",
+    state %in% c('RS', 'PR', 'SC') ~ "SU",
+    state %in% c('MS', 'MT', 'GO', 'DF') ~ "CO")
+
+  )|&gt;
+  rename(pop = estimated_population_2019) |&gt;
+  select(date, regiao, state, city, place_type, pop, deaths) |&gt;
+  filter(regiao == 'NE') |&gt;
+  group_by(state) |&gt;
+  summarise(deaths = max(deaths, na.rm = T)) |&gt;
+  arrange(deaths)
+```
+---
+
+## Criando uma tabela com o pacote `tibble`
+
+
+- A função `tibble` permite melhor visualização dos dados no console:
+
+
+```r
+# Fazer os códigos de UF
+
+cod_uf &lt;- tibble(
+  state = c("AL", "BA", "CE", "MA", "PB", "PE", "PI", "RN", "SE"),
+  cod_state = c(27, 29, 23, 21, 25, 26, 22, 24, 28)
+  ) |&gt; arrange(cod_state)
+```
+
+- Uma tabela `tibble` pode ser transformada em `data.frame` e vice-versa. Para isso, usam-se as funções `as.data.frame` e `as_tibble`, respectivamente.
+
+---
+
+- Usando as funções `left_join`, `relocate` e o `across` do pacote `dplyr`
+
+
+```r
+covid_join &lt;- left_join(covid_1, cod_uf, by = 'state') |&gt;
+  relocate(cod_state, .before = state) |&gt;
+  mutate(across(.cols = c(cod_state, deaths), .fns =  as.character))
+```
+
+- É importante entender o funcionamento dos `*_join`:
+
+&lt;img src="figuras/dplyr-joins.png" width="35%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+
+## Arrumando com `tidy`
+
+
+```r
+# separate
+covid_1 &lt;- separate(data = covid, col = date, into = c('ano', 'mes', 'dia'), sep = '-')
+
+# unite
+covid_2 &lt;- unite(data = covid_1, col = 'date2', c('ano', 'mes', 'dia'), sep = '-')
+
+# drop_na em toda a base
+covid_na &lt;- drop_na(data = covid)
+
+# drop_na em uma coluna específica
+covid_na &lt;- drop_na(data = covid, city)
+```
+
+---
+
+# Pivotagem
+
+- Talvez, as funções mais importantes do pacote `tidyr` sejam `pivot_wider` e `pivot_long`
+
+- Vamos considerar a tabela abaixo:
+
+
+|ano  |city   | deaths|
+|:----|:------|------:|
+|2020 |Coreaú |     19|
+|2020 |Sobral |    325|
+|2021 |Coreaú |     70|
+|2021 |Sobral |    740|
+
+---
+
+
+```r
+# Dados longitudinal para cross-section
+d1 &lt;- pivot_wider(data = d, names_from = ano, values_from = deaths, names_glue = 'mortes_{ano}')
+```
+
+
+|city   | mortes_2020| mortes_2021|
+|:------|-----------:|-----------:|
+|Coreaú |          19|          70|
+|Sobral |         325|         740|
+
+
+```r
+# cross-section para longitudinal
+d2 &lt;- pivot_longer(data = d1, cols = c('2020', '2021'), names_to = 'ano', values_to = 'deaths')
+```
+
+
+|city   |ano  | deaths|
+|:------|:----|------:|
+|Coreaú |2020 |     19|
+|Coreaú |2021 |     70|
+|Sobral |2020 |    325|
+|Sobral |2021 |    740|
+
+
+---
+
+
+```r
+df &lt;- separate(df, )
+
+df &lt;- unite(df,)
+
+
+df &lt;- drop_na(df, )
+
+
+df &lt;- fill(df, )
+
+df &lt;- replace_na(df, )
+```
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "18:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
