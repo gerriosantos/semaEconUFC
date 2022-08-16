@@ -649,6 +649,9 @@ rm(x)
 # remover todos os objetos do seu ambiente.
 rm(list = ls())
 
+# Instalar pacotes
+install.packages()
+
 # Remover pacote
 remove.packages()
 
@@ -996,8 +999,8 @@ covid_na <- drop_na(data = covid, city)
 
 ```
 
+## Substituindo os `NAs`
 
----
 ```{r, eval=FALSE}
 
 # tibble
