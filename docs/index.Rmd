@@ -469,7 +469,7 @@ d - 1
 d <- 1:6
 
 # soma elemento a elemento
-d + 5:9
+d + 5:10
 
 ```
 
@@ -503,7 +503,7 @@ d * d
 # objeto
 a <- 10
 
-# string (como se cham textos no contexto de programação)
+# string (como se chama textos no contexto de programação)
 'a'
 
 ```
@@ -511,15 +511,6 @@ a <- 10
 - Para saber a classe de um objeto, usar a função `class`
 
 - As classes mais básicas são **numeric**, **character** e **logical**
-
----
-
-
-
-
-
-
-
 
 ---
 class: center, middle, animated slideInRight fadeOutLeft
@@ -665,11 +656,6 @@ class: center, middle, animated slideInRight fadeOutLeft
 ---
 ## Ciclo de Ciência de Dados
 
-```{r, echo=FALSE, fig.align='center', out.width = '80%'}
-knitr::include_graphics('figuras/ciclo_DS_1.png')
-
-```
----
 ```{r, echo=FALSE, fig.align='center', out.width = '80%'}
 knitr::include_graphics('figuras/ciclo_DS_2.png')
 
@@ -1015,6 +1001,14 @@ fill(tab_3, y)
 
 
 ```
+---
+```{r, echo=FALSE, fig.align='center', out.width = '80%'}
+knitr::include_graphics('figuras/xau_.gif')
+
+```
+
+
+
 
 
 
