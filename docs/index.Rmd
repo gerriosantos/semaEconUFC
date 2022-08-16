@@ -291,7 +291,10 @@ class: center, middle, animated slideInRight fadeOutLeft
 
 # Objetos
 ---
-## Vetores
+
+- O obejeto é basicamente um nome que guarda um valor.
+
+
 - O operador `:` retorna resultados como um vetor.
 
 ```{r}
@@ -361,9 +364,96 @@ ls()
 
 ---
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Criando Vetores
+
+```{r}
+c(2, 3, 4)
+
+2:4
+
+c('a', 'b', 'c')
+
+c(T, F, T)
+
+
+```
+
+---
+
+```{r}
+seq(2, 5, by = 1)
+
+seq(2, 5, by = 0.5)
+
+
+rep(1:3, times = 2)
+
+rep(1:3, each =  2)
+
+
+# Combinando as duas funções
+rep(seq(2,3, 0.5), times = 2)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 - Agora temos os dados armazenados na memória do computador.
 
-- O `R` nem sempre aplica regras de multiplicação de matrizes. Pois, usa-se execução por elementos.
 
 ```{r}
 
@@ -383,15 +473,53 @@ d + 5:9
 
 ```
 
-
 ```{r}
 
 # multiplica elemento a elemento 
-# (não usa a regra de nº de linhas de A deve ser igual ao nº de colunas de B)
+# (não usa a regra de que o nº de linhas de A deve ser igual ao nº de colunas de B)
 
 d * d
 
 ```
+
+
+---
+## Classes dos objetos
+
+- É a partir dela que tomamos deciões sobre o que fazer com os operadores.
+
+```{r, eval=FALSE}
+
+# classe numérica
+1 + 1
+
+# classe não numérica
+'a' + 'b'
+
+```
+
+```{r}
+
+# objeto
+a <- 10
+
+# string (como se cham textos no contexto de programação)
+'a'
+
+```
+
+- Para saber a classe de um objeto, usar a função `class`
+
+- As classes mais básicas são **numeric**, **character** e **logical**
+
+---
+
+
+
+
+
+
+
 
 ---
 class: center, middle, animated slideInRight fadeOutLeft
@@ -813,7 +941,7 @@ covid_na <- drop_na(data = covid, city)
 
 ---
 
-# Pivotagem
+## Pivotagem
 
 - Talvez, as funções mais importantes do pacote `tidyr` sejam `pivot_wider` e `pivot_long`
 
@@ -857,19 +985,31 @@ readr::read_rds('../data-raw/tab_piv_longer.rds') |> data.frame() |> knitr::kabl
 
 ---
 
+## Apagando os `NAs`
+
+```{r, eval=FALSE}
+# apaga todos os NAs da base
+covid_na <- drop_na(data = covid)
+
+# apaga os NAs da coluna city
+covid_na <- drop_na(data = covid, city)
+
+```
+
+
+---
 ```{r, eval=FALSE}
 
-df <- separate(df, )
+# tibble
+tab_3 <- tibble(x = c('A', 'B', 'C', 'D', 'E'),
+                y = c(1, NA, NA, 3, NA))
 
-df <- unite(df,)
+# substituindo NA por ZERO 
+replace_na(tab_3, list(y = 0))
 
+# substituindo a coluna completando com os valores existentes
+fill(tab_3, y)
 
-df <- drop_na(df, )
-
-
-df <- fill(df, )
-
-df <- replace_na(df, )
 
 ```
 
