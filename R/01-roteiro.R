@@ -2,6 +2,7 @@
 rm(list = ls())
 gc()
 
+
 library(tidyverse)
 library(readxl)
 
@@ -10,13 +11,17 @@ library(readxl)
 
 # Importando ----
 
+# Baixando base com xlsx
 # rais <- read_xlsx(path = 'data-raw/df_rais.xlsx')
 
-covid <- read_csv('data-raw/caso.csv')
+# Baixando a base covid como csv (precisa ter no seu projeto, na pasta data-raw)
+# covid <- read_csv('data-raw/caso.csv')
 
-# Pegar online no brail.io (ultimo atualização no site em 2022-03-27)
-# url = "https://data.brasil.io/dataset/covid19/caso.csv.gz"
-# covid <- readr::read_csv(url)
+
+# Pegar online no brail.io  a base covid (ultimo atualização no site em 2022-03-27)
+
+url = "https://data.brasil.io/dataset/covid19/caso.csv.gz"
+covid <- readr::read_csv(url)
 
 
 
@@ -31,11 +36,11 @@ covid <- read_csv('data-raw/caso.csv')
 # Forma Ineficiente
 
 covid_1 <- mutate(covid, regiao = case_when(
-    state %in% c('PA', 'AM', 'AP', 'RO', 'AC', 'TO', 'RR') ~ "NO",
-    state %in% c('BA', 'CE', 'PE', 'MA', 'PI', 'SE', 'AL', 'PB', 'RN') ~ "NE",
-    state %in% c('SP', 'RJ', 'MG', 'ES') ~ "SE",
-    state %in% c('RS', 'PR', 'SC') ~ "SU",
-    state %in% c('MS', 'MT', 'GO', 'DF') ~ "CO"))
+  state %in% c('PA', 'AM', 'AP', 'RO', 'AC', 'TO', 'RR') ~ "NO",
+  state %in% c('BA', 'CE', 'PE', 'MA', 'PI', 'SE', 'AL', 'PB', 'RN') ~ "NE",
+  state %in% c('SP', 'RJ', 'MG', 'ES') ~ "SE",
+  state %in% c('RS', 'PR', 'SC') ~ "SU",
+  state %in% c('MS', 'MT', 'GO', 'DF') ~ "CO"))
 
 covid_2 <- rename(covid_1, pop = estimated_population_2019)
 
@@ -77,7 +82,7 @@ covid_1 <- covid |>
 cod_uf <- tibble(
   state = c("AL", "BA", "CE", "MA", "PB", "PE", "PI", "RN", "SE"),
   cod_state = c(27, 29, 23, 21, 25, 26, 22, 24, 28)
-  ) |> arrange(cod_state)
+) |> arrange(cod_state)
 
 
 # cod_uf <- data.frame(
@@ -183,13 +188,15 @@ write_rds(d1, 'data-raw/tab_piv_wider.rds')
 
 rm(list = ls())
 
-covid <- read_csv('data-raw/caso.csv')
+# Pegando novamente a base da covid no brasil.io, direto do site.
+# Esse código só é válido para quando temos apenas um arquivo dentro do gz.
+url = "https://data.brasil.io/dataset/covid19/caso.csv.gz"
+covid <- readr::read_csv(url)
 
 
 covid_na <- drop_na(data = covid)
 
 covid_na <- drop_na(data = covid, city)
-
 
 
 

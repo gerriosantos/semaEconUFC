@@ -292,7 +292,7 @@ class: center, middle, animated slideInRight fadeOutLeft
 # Objetos
 ---
 
-- O obejeto é basicamente um nome que guarda um valor.
+- O objeto é basicamente um nome que guarda um valor.
 
 
 - O operador `:` retorna resultados como um vetor.
@@ -615,7 +615,7 @@ iris
 getwd()
 
 # Modifica o atual diretório
-setwd('C://file/path')
+setwd('C:/path/nome_diretorio')
 
 ```
 
@@ -656,7 +656,7 @@ class: center, middle, animated slideInRight fadeOutLeft
 ---
 ## Ciclo de Ciência de Dados
 
-```{r, echo=FALSE, fig.align='center', out.width = '80%'}
+```{r, echo=FALSE, fig.align='center', out.width = '70%'}
 knitr::include_graphics('figuras/ciclo_DS_2.png')
 
 ```
