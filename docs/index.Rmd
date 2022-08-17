@@ -920,11 +920,12 @@ covid_1 <- separate(data = covid, col = date, into = c('ano', 'mes', 'dia'), sep
 # unite
 covid_2 <- unite(data = covid_1, col = 'date2', c('ano', 'mes', 'dia'), sep = '-')
 
-# drop_na em toda a base
+# apaga todos os NAs da base
 covid_na <- drop_na(data = covid)
 
-# drop_na em uma coluna específica
+# apaga os NAs da coluna city
 covid_na <- drop_na(data = covid, city)
+
 
 ```
 
@@ -973,17 +974,6 @@ readr::read_rds('../data-raw/tab_piv_longer.rds') |> data.frame() |> knitr::kabl
 
 
 ---
-
-## Apagando os `NAs`
-
-```{r, eval=FALSE}
-# apaga todos os NAs da base
-covid_na <- drop_na(data = covid)
-
-# apaga os NAs da coluna city
-covid_na <- drop_na(data = covid, city)
-
-```
 
 ## Substituindo os `NAs`
 

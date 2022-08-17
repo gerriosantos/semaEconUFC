@@ -1162,10 +1162,10 @@ covid_1 &lt;- separate(data = covid, col = date, into = c('ano', 'mes', 'dia'), 
 # unite
 covid_2 &lt;- unite(data = covid_1, col = 'date2', c('ano', 'mes', 'dia'), sep = '-')
 
-# drop_na em toda a base
+# apaga todos os NAs da base
 covid_na &lt;- drop_na(data = covid)
 
-# drop_na em uma coluna específica
+# apaga os NAs da coluna city
 covid_na &lt;- drop_na(data = covid, city)
 ```
 
@@ -1215,17 +1215,6 @@ d2 &lt;- pivot_longer(data = d1, cols = c('2020', '2021'), names_to = 'ano', val
 
 
 ---
-
-## Apagando os `NAs`
-
-
-```r
-# apaga todos os NAs da base
-covid_na &lt;- drop_na(data = covid)
-
-# apaga os NAs da coluna city
-covid_na &lt;- drop_na(data = covid, city)
-```
 
 ## Substituindo os `NAs`
 
